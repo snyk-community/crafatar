@@ -28,7 +28,9 @@
     "postinstall": "cp 'config.example.js' 'config.js'",
     "start": "node www.js",
     "test": "mocha",
-    "test-travis": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test-travis": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "engines": {
     "node": "4.4.0"
@@ -42,12 +44,14 @@
     "node-df": "crafatar/node-df",
     "redis": "~2.5.2",
     "request": "~2.69.0",
-    "toobusy-js": "~0.4.2"
+    "toobusy-js": "~0.4.2",
+    "snyk": "^1.319.1"
   },
   "devDependencies": {
     "coveralls": "~2.11.6",
     "istanbul": "~0.4.2",
     "mocha": "~2.4.1",
     "mocha-lcov-reporter": "~1.2.0"
-  }
+  },
+  "snyk": true
 }
